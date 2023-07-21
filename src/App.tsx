@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { ColorModeContext, useMode } from "./theme";
+import { Box, CssBaseline, ThemeProvider, Typography } from "@mui/material";
+import { Routes, Route } from "react-router-dom";
+import SideBar from "./Components/global/ProSideBar/SideBar";
+import Messages from "./lists/Messages";
+import Header from "./Components/ui/Header";
 
-function App() {
+const App = () => {
+  const [theme, colorMode] = useMode();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Box className="app  h-screen relative flex flex-row overflow-hidden">
+          <SideBar />
+          <main className="content flex flex-row border w-full">
+            <Messages />
+            <div className={`grow-[7] border    mx-1 my-2 rounded-xl`}>
+              <Header title={"Main Content"} />
+            </div>
+          </main>
+        </Box>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
-}
+};
 
 export default App;
