@@ -4,6 +4,7 @@ import { Box, IconButton, InputBase, useTheme } from "@mui/material";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import { tokens } from "../theme";
+import MessageItem from "../Components/ui/MessageItem";
 const Messages = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
@@ -44,6 +45,7 @@ const Messages = () => {
           <SearchIcon />
         </IconButton>
       </Box>
+      <MessageItem />
     </Box>
   );
 };
